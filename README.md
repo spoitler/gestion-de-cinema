@@ -1,5 +1,3 @@
-# gestion-de-cinema
-
 Gestion de Films
 ===
 Projet école : Application lourdes en C# avec interface WPF.
