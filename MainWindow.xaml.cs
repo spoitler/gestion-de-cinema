@@ -49,27 +49,19 @@ namespace ppeEntityWpf
 
         private void Button_Click_Modify(object sender, RoutedEventArgs e)
         {
-
             var button = sender as Button;
             var id = button.Tag.ToString();
-
-            MessageBox.Show("click : " + id );
         }
 
         private void Button_Click_Delete(object sender, RoutedEventArgs e)
         {
             Button button = sender as Button;
             int id = Convert.ToInt32(button.Tag);
-            MessageBox.Show(ListViewFilms.SelectedItem.ToString());
+
             listFilms.SupprimerFilm(id);
             ListViewFilms.Items.RemoveAt(ListViewFilms.SelectedIndex);
-
-            
             ListViewFilms.Items.Refresh();
-            
-
-            /*MessageBox.Show();*/
-
+            Delete.IsEnabled = false;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -114,14 +106,18 @@ namespace ppeEntityWpf
         private void ListViewFilms_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             Delete.IsEnabled = true;
-            Object objet = ListViewFilms.SelectedItem;
 
-            film film = (film)Convert.ChangeType(objet, typeof(film));
+            List<film> list = listFilms.ChargerFilms();
+            int j = 0;
 
-            Delete.Tag = film.id_film;
-
-            // MessageBox.Show(test);
-
+            foreach (film filmA in list)
+            {
+                if(j == ListViewFilms.SelectedIndex)
+                {
+                    Delete.Tag = filmA.id_film;
+                }
+                j++;
+            }
         }
     }
 }
