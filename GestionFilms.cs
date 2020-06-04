@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Navigation;
 
 namespace ppeEntityWpf
@@ -11,11 +13,11 @@ namespace ppeEntityWpf
     class GestionFilms
     {
 
-        private ContextFilms context = new ContextFilms();
+        private Context context = new Context();
 
         public List<film> ChargerFilms()
         {
-            return context.films.Include(a => a.realisateur).ToList();
+            return context.films.Include(a => a.realisateur).Include(a => a.acteurs).ToList();
         }
 
         public film AjouterFilm(film film)
@@ -63,6 +65,20 @@ namespace ppeEntityWpf
             film film = context.films.Find(id);
 
             return film ?? null;
+        }
+
+        public acteur RechercherAct(int id)
+        {
+            acteur acteur = context.acteurs.Find(id);
+
+            return acteur ?? null;
+        }
+
+        public genre RechercherGenre(int id)
+        {
+            genre genre = context.genres.Find(id);
+
+            return genre ?? null;
         }
     }
 }

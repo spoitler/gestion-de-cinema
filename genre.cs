@@ -9,12 +9,21 @@ namespace ppeEntityWpf
     [Table("ppe.genres")]
     public partial class genre
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public genre()
+        {
+            films = new HashSet<film>();
+        }
+
         [Key]
         public int id_genre { get; set; }
 
         [Column("genre")]
         [Required]
         [StringLength(50)]
-        public string genre1 { get; set; }
+        public string name { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<film> films { get; set; }
     }
 }

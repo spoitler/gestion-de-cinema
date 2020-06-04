@@ -5,40 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ppeEntityWpf"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="450" Width="964" WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="209*"/>
             <RowDefinition Height="210*"/>
+            <RowDefinition Height="209*"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="0*"/>
-        </Grid.ColumnDefinitions>
-        <ListView Name="ListViewFilms" Height="271" Margin="152,15,10,0" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2" SelectionChanged="ListViewFilms_SelectionChanged" >
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=titre}" Width="auto" Header="Titre"/>
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=description}" Width="800px" Header="Description" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=année}" Width="auto" Header="Année" />
-                    <GridViewColumn DisplayMemberBinding="{Binding Path=realisateur.fullName}" Width="150" Header="Réalisateur" />
-                    <GridViewColumn>
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Button
-                                    Tag="{Binding Path=id_film}"
-                                    Content="Modifier"
-                                    Margin="0"
-                                    VerticalAlignment="Center"
-                                    Click="Button_Click_Modify" />
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Button Content="Button" HorizontalAlignment="Left" Margin="48,16,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click" Height="20" RenderTransformOrigin="0.28,1.1"/>
-        <Button x:Name="Delete" Content="Delete" HorizontalAlignment="Left" Margin="48,55,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Delete" Height="20" RenderTransformOrigin="0.507,0.5" IsEnabled="False"/>
+        <Button Content="Modifier" HorizontalAlignment="Left" Margin="555,200,0,0" VerticalAlignment="Top" Width="75" Height="20" Grid.RowSpan="2" Click="editCinema"/>
+        <Button Content="Modifier" HorizontalAlignment="Left" Margin="320,200,0,0" VerticalAlignment="Top" Width="75" Height="20" Grid.RowSpan="2" Click="editfFilm"/>
+        <Label Content="Gestion des films" HorizontalAlignment="Left" Margin="300,154,0,0" VerticalAlignment="Top" Width="110"/>
+        <Label Content="Gestion des cinémas" HorizontalAlignment="Left" Margin="535,154,0,0" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Application gestion de film WPF" HorizontalAlignment="Left" Margin="366,80,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Width="224"/>
+
     </Grid>
 </Window>

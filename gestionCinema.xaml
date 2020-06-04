@@ -1,0 +1,31 @@
+﻿<Window x:Class="ppeEntityWpf.gestionCinema"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ppeEntityWpf"
+        mc:Ignorable="d"
+        Title="gestionCinema" Height="450" Width="964" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="209*"/>
+            <RowDefinition Height="210*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0*"/>
+        </Grid.ColumnDefinitions>
+        <ListView Name="ListViewCinemas" Height="394" Margin="242,15,10,0" VerticalAlignment="Top" Grid.RowSpan="2" Grid.ColumnSpan="2" SelectionChanged="ListViewCinemas_SelectionChanged" BorderThickness="0" AutomationProperties.IsOffscreenBehavior="Onscreen" AutomationProperties.IsColumnHeader="True" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=nom}" Width="150" Header="Nom"/>
+                    <GridViewColumn DisplayMemberBinding="{Binding Path=ville.nom}" Width="150" Header="Ville" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="Edit"  Content="Modifier" HorizontalAlignment="Left" Margin="128,16,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_edit" Height="20" RenderTransformOrigin="0.28,1.1" IsEnabled="False"/>
+        <Button x:Name="Delete" Content="Supprimer" HorizontalAlignment="Left" Margin="25,50,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Delete" Height="20" RenderTransformOrigin="0.507,0.5" IsEnabled="False"/>
+        <Button x:Name="Add" Content="Ajouter" HorizontalAlignment="Left" Margin="25,16,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_Add" Height="20" RenderTransformOrigin="0.5,0.5"/>
+    </Grid>
+</Window>

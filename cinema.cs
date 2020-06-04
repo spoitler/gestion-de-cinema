@@ -9,6 +9,12 @@ namespace ppeEntityWpf
     [Table("ppe.cinemas")]
     public partial class cinema
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public cinema()
+        {
+            films = new HashSet<film>();
+        }
+
         [Key]
         public int id_cinema { get; set; }
 
@@ -19,5 +25,8 @@ namespace ppeEntityWpf
         public int id_ville { get; set; }
 
         public virtual ville ville { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<film> films { get; set; }
     }
 }

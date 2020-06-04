@@ -9,6 +9,14 @@ namespace ppeEntityWpf
     [Table("ppe.films")]
     public partial class film
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public film()
+        {
+            genres = new HashSet<genre>();
+            cinemas = new HashSet<cinema>();
+            acteurs = new HashSet<acteur>();
+        }
+
         [Key]
         public int id_film { get; set; }
 
@@ -28,6 +36,13 @@ namespace ppeEntityWpf
 
         public virtual realisateur realisateur { get; set; }
 
-        
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<genre> genres { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<cinema> cinemas { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<acteur> acteurs { get; set; }
     }
 }
